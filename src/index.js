@@ -6,8 +6,8 @@ const app = express();
 
 const prepareAndStartServer=()=>{
 
-    app.listen(3000, ()=>{
-        console.log(`server started at Port: ${PORT}`);
+    app.listen(PORT, async()=>{
+        console.log(`server started at Port: ${PORT} `);
     });
 }
 
