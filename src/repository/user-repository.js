@@ -1,9 +1,10 @@
-const {User} = require('../models/index');
+const {user} = require('../models/index');
 
 class UserRepository{
     async create(data){
         try {
-            const user = await User.create(data);
+            const users = await user.create(data);
+            return users;
         } catch (error) {
             console.log("Something went wrong on repository layer");
             throw error;
