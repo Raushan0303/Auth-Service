@@ -16,10 +16,28 @@ class UserService {
             throw error;
         }
     }
+    async signIn(email, plainPassword){
+        try {
+            //step 1-> fetch the user using email
+            const user = await this.userRepository.findOne(email);
+            // step 2 -> compare incoming plain password with stores encrypted password
+            const passwordMatch = this.checkPassword(plainPassword,user.password);
+            if(!passwordMatch){
+                console.log("Password does not match");
+                throw {error: 'Incorrect password'}
+            }
+            // step 3 -> if password match then create a token and send it to the user
+            const newJwt = this.createToken({email: user.email, id: user.id});
+            return newJwt;
+        } catch (error) {
+            console.log("something went wrong in sign in process")
+        }
+
+    }
 
     createToken(user) {
         try {
-            const result = jwt.sign(user, JWT_KEY, {expiresIn: '1h'});
+            const result = jwt.sign(user, JWT_KEY, {expiresIn: '5h'});
             return result;
         } catch (error) {
             console.log("something went wrong in the token creation");

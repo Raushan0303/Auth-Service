@@ -25,14 +25,14 @@ const prepareAndStartServer=()=>{
 
         // const response = await repo.getById(1);
         // console.log(response);
-        const service = new UserService();
+        // const service = new UserService();
 
         // const newToken = service.createToken({email: 'raushan@admin.com', id: 1});
         // console.log("new token is", newToken);
 
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhdXNoYW5AYWRtaW4uY29tIiwiaWQiOjEsImlhdCI6MTcwOTU1ODExMCwiZXhwIjoxNzA5NTYxNzEwfQ.LDTNc5deVxOztgI1HVbuCwLAFbUDFt_FN6YOXBwGReY'
-        const response = service.verifyToken(token);
-        console.log(response);
+        // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhdXNoYW5AYWRtaW4uY29tIiwiaWQiOjEsImlhdCI6MTcwOTU3NTQwNCwiZXhwIjoxNzA5NTc5MDA0fQ.O56yxLNGLO6GUnXH1LQtg7ZepXICzJrBzsZAsTfwOck'
+        // const response = service.verifyToken(token);
+        // console.log(response);
 
 
 
