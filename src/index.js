@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const {PORT} = require('./config/serverConfig');
 const apiRoutes = require('./routes/index');
 
+
+const UserService = require('./services/user-service')
 // const {user} = require('./models/index');
 // const bcrypt = require('bcrypt');
-const UserRepository = require('./repository/user-repository')
+// const UserRepository = require('./repository/user-repository')
 const app = express();
 
 
@@ -19,10 +21,20 @@ const prepareAndStartServer=()=>{
 
     app.listen(PORT, async()=>{
         console.log(`server started at Port: ${PORT} `);
-        const repo = new UserRepository();
+        // const repo = new UserRepository();
 
-        const response = await repo.getById(1);
+        // const response = await repo.getById(1);
+        // console.log(response);
+        const service = new UserService();
+
+        // const newToken = service.createToken({email: 'raushan@admin.com', id: 1});
+        // console.log("new token is", newToken);
+
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhdXNoYW5AYWRtaW4uY29tIiwiaWQiOjEsImlhdCI6MTcwOTU1ODExMCwiZXhwIjoxNzA5NTYxNzEwfQ.LDTNc5deVxOztgI1HVbuCwLAFbUDFt_FN6YOXBwGReY'
+        const response = service.verifyToken(token);
         console.log(response);
+
+
 
         // const incomingPassword = '123456';
         // const users = await user.findByPk(2);
