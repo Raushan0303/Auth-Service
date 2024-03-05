@@ -17,13 +17,9 @@ router.post(
 
 router.get(
     '/isAuthenticated',
-    UserController.isAuthenticated
+    UserController.isAunthenticated
 )
 
-router.get('/dummy',(req,res)=>{
-    return res.status(200).json({message: 'ok'});
-}
 
-)
 
 module.exports = router;

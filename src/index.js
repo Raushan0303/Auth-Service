@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
 const {PORT} = require('./config/serverConfig');
 const apiRoutes = require('./routes/index');
 
+const db = require('./models/index');
 
-const UserService = require('./services/user-service')
-// const {user} = require('./models/index');
+// const UserService = require('./services/user-service')
+const {user, Role} = require('./models/index');
 // const bcrypt = require('bcrypt');
 // const UserRepository = require('./repository/user-repository')
 const app = express();
@@ -21,6 +23,15 @@ const prepareAndStartServer=()=>{
 
     app.listen(PORT, async()=>{
         console.log(`server started at Port: ${PORT} `);
+
+        const u1 = await user.findByPk(3);
+        const r1 = await Role.findByPk(2);
+
+        u1.addRole(r1);
+
+        // if(process.env.DB_SYNC){
+        //     db.sequelize.sync({alter: true});
+        //  } 
         // const repo = new UserRepository();
 
         // const response = await repo.getById(1);
